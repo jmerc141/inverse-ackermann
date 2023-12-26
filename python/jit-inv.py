@@ -1,8 +1,8 @@
 # Inverse Ackermann python
 import sys, time
-from numba import njit
+from numba import njit, types
 
-@njit
+@njit(types.uint64(types.uint64), cache=True)
 def i_ack(n):
     if n<=4:
         return n
