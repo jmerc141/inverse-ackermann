@@ -1,3 +1,4 @@
+# Git replaces LF with CRLF, re-encode to LF
 #!/bin/bash
 
 inv(){
