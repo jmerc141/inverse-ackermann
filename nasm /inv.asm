@@ -49,10 +49,10 @@ _start:
 	mov rdx, [n]
 	mov r8, rsi
 	;mov r9, r10
-  sub rsp, 32
-  call printf
-  add rsp, 32
+  	sub rsp, 32
+  	call printf
+  	add rsp, 32
 
-  ret
+  	ret
 
 	
