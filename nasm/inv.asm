@@ -2,16 +2,18 @@
 ; Uncomment line 19 and 51 to see Calls
 
 
-global  _start
-extern  printf
+global _start
+extern printf
+extern scanf
 
 section .data
+	inp db "Enter n: ", 0
+	fmt db "%llu", 0
 	msg  db "Inverse Ackermann(%llu) = %llu, Calls: %llu", 10, 0
-	n    dq 54
 
 
 section .bss
-	a resq 1
+	n resq 1
 
 
 section .text
@@ -38,10 +40,24 @@ inverse:
 
 ;Basically cannot get command line parameters on Windows 64 bit
 _start:
-	mov rdi, [n]
 	mov r10, 0
 	mov rsi, 0
 	
+	;printf input message
+	mov rcx, inp
+	sub rsp, 32
+	call printf
+	add rsp, 32
+
+	; scanf
+	mov rcx, fmt
+	mov rdx, n
+	sub rsp, 32
+	call scanf
+	add rsp, 32
+
+	mov rdi, [n]
+
 	call inverse
 	
 	;printf
